@@ -30,24 +30,35 @@ public class Commande implements Serializable {
     private List<SousCommande> sousCommandes=new ArrayList<>();
     
     @ManyToOne
-    @JoinColumn(name = "Util_Id")
+    @JoinColumn(name = "UTIL_ID")
     private Utilisateur utilisateur;    
     
     @ManyToOne
-    @JoinColumn(name = "ModeLivraison_Id")
+    @JoinColumn(name = "MODELIVRAISON_ID")
     private ModeLivraison modeLivraison;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
 
-    private Double prixTotal;
+    private Double prixTotal=0.0;
 
-    private Boolean paye = false;
+    private Boolean payee = false;
+
+    private Boolean livree = false;
 
     public List<SousCommande> getSousCommandes() {
         return sousCommandes;
     }
 
+    public Boolean getLivree() {
+        return livree;
+    }
+
+    public void setLivree(Boolean livree) {
+        this.livree = livree;
+    }
+
+    
     public void setSousCommandes(List<SousCommande> sousCommandes) {
         this.sousCommandes = sousCommandes;
     }
@@ -84,12 +95,12 @@ public class Commande implements Serializable {
         this.prixTotal = prixTotal;
     }
 
-    public Boolean getPaye() {
-        return paye;
+    public Boolean getPayee() {
+        return payee;
     }
 
-    public void setPaye(Boolean paye) {
-        this.paye = paye;
+    public void setPayee(Boolean payee) {
+        this.payee = payee;
     }
     
     

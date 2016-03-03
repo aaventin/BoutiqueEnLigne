@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package boutique.enumeration;
+package boutique.service;
 
 /**
  *
  * @author admin
  */
-public enum TypeCodePromo {
-    Pourcentage, Remise;
+public interface MailService {
+    
+    public void envoieMail(String emailEmetteur, String emailDestinataire, String titre, String message);
     
 }

@@ -6,6 +6,7 @@
 package boutique.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,9 +23,9 @@ import javax.persistence.OneToMany;
 public class ModeLivraison implements Serializable {
     
     @OneToMany(mappedBy = "modeLivraison")
-    private List<Commande> commandes;
+    private List<Commande> commandes = new ArrayList<>();
     
-    @Column(unique = true)
+    @Column(unique = true, length = 32)
     private String nom;
     
     private Double cout;

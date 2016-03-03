@@ -5,10 +5,14 @@
  */
 package boutique.entity;
 
+import boutique.enumeration.TypeUtil;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,29 +22,78 @@ import javax.persistence.OneToMany;
  *
  * @author admin
  */
+
+
 @Entity
 public class Utilisateur implements Serializable {
+
+    private Boolean connecte = false;
+            
+    @Enumerated(EnumType.STRING)
+    private TypeUtil typeUtil;
     
     @OneToMany(mappedBy = "utilisateur")
-    private List<Commande> commandes;
+    private List<Commande> commandes = new ArrayList<>();
     
-    @Column(unique = true)
+    @Column(unique = true, length = 32)
     private String email;
     
+    @Column(length = 32)
     private String mdp;
     
+    @Column(length = 32)
     private String adresse;
     
+    @Column(length = 8)
     private String codePostal;
     
+    @Column(length = 32)
     private String ville;
     
+    @Column(length = 32)
     private String telephone;
     
+    @Column(length = 32)
     private String nom;
     
+    @Column(length = 32)
     private String prenom;
+    
+    
+    public Utilisateur() {
+    }
+      
+    public Utilisateur(TypeUtil typeUtil, String email, String mdp, String adresse, String codePostal, String ville, String telephone, String nom, String prenom) {
+        this.typeUtil = typeUtil;
+        this.email = email;
+        this.mdp = mdp;
+        this.adresse = adresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+        this.telephone = telephone;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
 
+    public Boolean getConnecte() {
+        return connecte;
+    }
+
+    public void setConnecte(Boolean connecte) {
+        this.connecte = connecte;
+    }
+    
+    
+
+    public TypeUtil getTypeUtil() {
+        return typeUtil;
+    }
+
+    public void setTypeUtil(TypeUtil typeUtil) {
+        this.typeUtil = typeUtil;
+    }
+       
+    
     public List<Commande> getCommandes() {
         return commandes;
     }

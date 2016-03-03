@@ -7,7 +7,10 @@ package boutique.entity;
 
 import boutique.enumeration.TypeCodePromo;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,8 +22,10 @@ import javax.persistence.Id;
 @Entity
 public class CodePromo implements Serializable {
     
+    @Column(length = 32,unique = true)
     private String code;
     
+    @Enumerated(EnumType.STRING)
     private TypeCodePromo typeCodePromo;
     
     private Double valeur;

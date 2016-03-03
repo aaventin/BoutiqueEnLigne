@@ -21,15 +21,27 @@ import javax.persistence.ManyToOne;
 public class SousCommande implements Serializable {
     
     @ManyToOne
-    @JoinColumn(name = "Article_Id")
+    @JoinColumn(name = "ARTICLE_ID")
     private Article article;
     
     @ManyToOne
-    @JoinColumn(name = "Commande_Id")
+    @JoinColumn(name = "COMMANDE_ID")
     private Commande commande;
     
-    private Integer quantite;
+    private Integer quantite = 0;
 
+    public SousCommande() {
+    }
+    
+    
+
+    public SousCommande(Article article, Commande commande, Integer quantite) {
+        this.article = article;
+        this.commande = commande;
+        this.quantite = quantite;
+    }
+      
+    
     public Article getArticle() {
         return article;
     }

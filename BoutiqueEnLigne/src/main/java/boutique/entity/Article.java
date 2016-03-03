@@ -6,7 +6,11 @@
 package boutique.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javafx.scene.chart.PieChart;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,13 +28,17 @@ import javax.persistence.OneToMany;
 @Entity
 public class Article implements Serializable {
     
+    @Temporal(TemporalType.DATE)
+    private Date dateCreation;
+    
     @ManyToOne
-    @JoinColumn(name = "Categorie_Id")
+    @JoinColumn(name = "CATEGORIE_ID")
     private Categorie categorie;
     
     @OneToMany(mappedBy = "article")
-    private List<SousCommande> sousCommandes;
+    private List<SousCommande> sousCommandes = new ArrayList<>();
     
+    @Column(length = 32)
     private String nom;
     
     private Integer stock;

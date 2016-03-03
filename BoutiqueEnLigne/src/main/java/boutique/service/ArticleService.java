@@ -7,6 +7,7 @@ package boutique.service;
 
 import boutique.entity.Article;
 import java.io.Serializable;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,5 +15,11 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface ArticleService extends CrudRepository<Article, Long>{
+    
+    public List<Article> findByCategorieIdAndPrixBetweenAndNomContainingIgnoreCase(Long id, Double prixMin, Double prixMax,String nomArticle);
+    
+   
+    
+    
     
 }

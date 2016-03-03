@@ -5,11 +5,13 @@
  */
 package boutique.enumeration;
 
+import org.osgi.framework.AdminPermission;
+
 /**
  *
  * @author admin
  */
-public enum TypeCodePromo {
-    Pourcentage, Remise;
+public enum TypeUtil {
+    Client, Administrateur, AgentLogistique;
     
 }

@@ -6,6 +6,7 @@
 package boutique.service;
 
 import boutique.entity.Commande;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,9 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface CommandeService extends CrudRepository<Commande, Long>{
+    
+    public List<Commande> findByUtilisateurIdOrderByDateCreationDesc(Long utilId);
+    public List<Commande> findByLivree(Boolean livree);
+    public List<Commande> findByPayee(Boolean payee);
     
 }
